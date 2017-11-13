@@ -1,0 +1,18 @@
+extends ../layoutAdmin.jade
+block contenido
+	div(class="col-md-5 center-block no-float top-space alert alert-warning")
+		//button.close(type='button', data-dismiss='alert') &times
+		strong ¡Cuidado! 
+		="Estás a punto de eliminar información que podría ser importante"
+	div(class="col-md-5 center-block no-float top-space text-left")
+		h1(class="pacifico green text-center") Eliminar empresa de transporte
+		h2(class="m pacifico text-center") ¿Seguro desea eliminar la empresa de transporte: '#[span= company.name]'?
+		form(method="post" action="/company/#{company._id}?_method=delete" style="margin-top:1.5em;")
+			
+			div(class="form-group")
+				label Contraseña administrador
+				input(type="password" name="password" placeholder="Verifica que eres administrador" class="form-control" required)
+			div(class="form-group text-right")
+				input(type="submit" class="btn btn-info" value="Eliminar")
+
+

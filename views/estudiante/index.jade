@@ -1,0 +1,16 @@
+extends ../layoutAdmin.jade
+block contenido
+	h2(class='pacifico big white text-center') Estudiantes beneficiarios
+	div(class="form-group text-center")
+		="Para agregar un estudiante: " 
+		a(href="/estudiante/new" class="white") Haga clic aquí.
+	div(class="form-group text-center")
+		p(class="text-center") Estudiantes beneficiarios del subsidio de transporte (UQ):
+	each student in students
+		div(class="col-md-4 col-sm-6 col-xs-12 incline-block text-center")
+			h3(class="pacifico")= student.name
+			img(src="#{student.imageUrl}" class="col-xs-7 col-md-4 no-float menu")
+			p(style="margin-top:1em;") #[small(class="lato m") Identificación: #{student.id}]
+			p(style="margin-top:1em;") #[small(class="lato small") Teléfono: #{student.tel}]
+			p(style="margin-top:1em;") #[big(class="pacifico") Tiquetes disponibles: #{student.tickets}]
+			h3(class="text-center gris") __________________________

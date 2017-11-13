@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+	head
+		title B.U.S.
+		meta(charset="utf-8")
+		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/css/main.css" rel="stylesheet")
+		link(href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css')
+		link(href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css')
+		link(href='css/animate.css' rel='stylesheet' type='text/css')
+		link(href="/css/dropdown.css" rel="stylesheet")
+
+		link(href='search-filter.css', rel='stylesheet')
+
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+
+	
+	body
+		
+		nav(class="large-padding fondo-gris")
+			ul(class="no-list text-center")
+				//(class="pacifico col-md-3 inline-block")
+					a(href="/" class="green") B.U.S. #[small(class="lato small") Bienestar Universitario System]
+				//li(class="col-md-3 inline-block")
+					a(href="https://www.uniquindio.edu.co/bienestar/") Bienestar Universitario
+				li(class="col-md-3 inline-block") 
+					a(href="/admin" class="white") Beneficiarios &nbsp
+					&nbsp &nbsp - &nbsp &nbsp
+					a(href="/company" class="white") Convenios
+				li(class="col-md-3 inline-block")
+					a(href="/admin/reportes" class="white") Reportes
+				li(class="col-md-3 inline-block italic gris")
+					="Perfil de administrador - "
+					a(href="/admin/salir" class="white") Salir
+		block contenido

@@ -1,0 +1,22 @@
+extends ../layout.jade
+block contenido
+
+    section(class="full-height text-center" id="main-content")
+      div(class="data")
+        div(class="form-group col-md-6 col-sm-3 col-xs-8 center-block no-float top-space")
+          img(src="imgs/tiquetes2.png" class="animated fadeIn")
+          h2() #[m(class="lato bold big green top-space2 animated fadeIn") #{info.tiquetes}] 
+          //h1(class="pacifico big green animated fadeIn delay-1") B.U.S.
+        div(class="animated fadeInDown delay-2 pequeño")
+          //h2(class="m") Bienestar Universitario System
+          h2(class="small") - - - #[span= info.num] - - -
+        div(class="animated fadeInDown delay-2 pequeño")
+          h2(class="m red") #[span= info.result]
+          h2(class="m normal") Estimado: #[m(class="lato bold") #{info.name}] - Identificación: #[m(class="lato bold") #{info.id}] 
+          //h2(class="m normal") Respuesta del servidor: #[m(class="lato bold") #{info.server}]
+        div(class="animated fadeInDown delay-2 pequeño")
+          //h2(class="m") Bienestar Universitario System
+        div(class="form-group col-md-6 col-sm-3 col-xs-8 center-block no-float top-space")
+          hr(style='border1px;' class="marginleft marginright")
+          form(method="GET" action="/" style="margin-top:1.5em")
+            input(type="submit" class="btn btn-info" value="Aceptar")

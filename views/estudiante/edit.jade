@@ -1,0 +1,30 @@
+extends ../layoutAdmin.jade
+block contenido
+	div(class="col-md-5 center-block no-float top-space alert alert-warning")
+		//button.close(type='button', data-dismiss='alert') &times
+		strong ¡Cuidado! 
+		="Estás a punto de modificar información que podría ser importante"
+	div(class="col-md-5 center-block no-float top-space text-left")
+		h1(class="pacifico green text-center") Editar estudiante
+		form(method="POST" action="/estudiante/#{student._id}?_method=put" style="margin-top:1.5em;" enctype="multipart/form-data")
+			div(class="form-group")
+				label Nombre
+				input(type="text" name="name" value="#{student.name}" placeholder="Nombre del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Identificación
+				input(type="number" name="id" value="#{student.id}" placeholder="Identificación del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Teléfono
+				input(type="number" name="tel" value="#{student.tel}" placeholder="Teléfono del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Correo electrónico
+				input(type="text" name="email" value="#{student.email}" placeholder="E-mail del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Tiquetes
+				input(type="number" name="tickets" value="#{student.tickets}" placeholder="Cantidad de tiquetes disponibles" class="form-control" required)
+			div(class="form-group")
+				label Contraseña administrador
+				input(type="password" name="password" placeholder="Verifica que eres administrador" class="form-control" required)
+			div(class="form-group text-right")
+				input(type="submit" class="btn btn-info" value="Editar")
+

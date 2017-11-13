@@ -1,0 +1,16 @@
+extends ../layout.jade
+block contenido
+	div(class="col-md-5 col-sm-3 col-xs-10 center-block no-float top-space ")
+		img(src="imgs/ingresoAdministrativos.png" class="animated fadeIn")
+	div(class="animated fadeInDown delay-2 pequeño text-center")
+		h2(class="m") Bienestar Universitario System
+	div(class="col-md-5  col-sm-4 col-xs-10 center-block no-float top-space animated fadeInDown delay-2 alert alert-info")
+		strong Información: 
+		="Si es administrador, ingrese el código de acceso a continuación:"
+	div(class="col-md-5  col-sm-4 col-xs-8  animated fadeInDown delay-2 col-md-5 center-block no-float")
+		form(method="POST" action="/admin" style="margin-top:1.5em")
+			div(class="form-group")
+				label Código
+				input(type="password" name="password" placeholder="Código de administrador" class="form-control" required)
+			div(class="form-group text-center")
+				input(type="submit" class="btn btn-info" value="Iniciar Sesión")

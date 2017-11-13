@@ -1,0 +1,29 @@
+extends ../layout.jade
+block contenido
+
+    section(class="full-height text-center" id="main-content")
+      div(class="data")
+        div(class="col-md-4 col-sm-3 col-xs-5 center-block no-float top-space ")
+          img(src="imgs/uniquindio.png" class="animated fadeIn")
+          //h1(class="pacifico big green animated fadeIn delay-1") B.U.S.
+        h2(class="m") Bienestar Universitario System
+
+        div(class="col-md-4  col-sm-4 col-xs-10 center-block no-float top-space animated fadeInDown delay-2 alert alert-info")
+           strong Información: 
+           ="Si es beneficiario, ingrese su identificación para obtener los tiquetes de transporte."
+        div(class="col-md-4 col-sm-4 col-xs-8 center-block no-float text-left animated fadeInDown delay-2")
+             form(method="POST" action="/inicio" style="margin-top:1.5em")
+                 div(class="form-group")
+                     label Identificación
+                     input(type="number" name="id" placeholder="Ingrese su identificación" class="form-control" require)
+                 //div(class="form-group")
+                     label Contraseña
+                     input(type="password" name="password" placeholder="Ingrese contraseña" class="form-control")
+                 div(class="form-group text-center")
+                     input(type="submit" class="btn btn-info" value="Obtener tiquetes")
+            //nav(class="animated fadeIn")
+            //a(href="/estudiante" class="right-space") Listar beneficiarios
+            //a(href="https://www.uniquindio.edu.co/bienestar/" class="right-space") Bienestar Universitario
+            //a(href="/estudiante/new" class="right-space") Registrar
+    script(src="https://code.jquery.com/jquery-2.1.1.min.is")
+    script(src="js/main.js")

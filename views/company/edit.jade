@@ -1,0 +1,34 @@
+extends ../layoutAdmin.jade
+block contenido
+	div(class="col-md-5 center-block no-float top-space alert alert-warning")
+		//button.close(type='button', data-dismiss='alert') &times
+		strong ¡Cuidado! 
+		="Estás a punto de modificar información que podría ser importante"
+	div(class="col-md-5 center-block no-float top-space text-left")
+		h1(class="pacifico green text-center") Editar empresa de transporte
+		form(method="POST" action="/company/#{company._id}?_method=put" style="margin-top:1.5em;" enctype="multipart/form-data")
+			div(class="form-group")
+				label Nombre
+				input(type="text" name="name" value="#{company.name}" placeholder="Nombre de la compañía de transporte" class="form-control" required)
+			div(class="form-group")
+				label NIT
+				input(type="text" name="id" value="#{company.id}" placeholder="NIT De la compañía de transporte" class="form-control" required)
+			div(class="form-group")
+				label Teléfono
+			div(class="form-group")
+				label Ciudad &nbsp &nbsp
+				select(name='ciudad' id="ciudades" )
+					each city in cities
+						option(value=city.name) #{city.name}
+				&nbsp &nbsp &nbsp  &nbsp 	
+				
+				input(type="text" name="tel" value="#{company.tel}" placeholder="Teléfono de la compañía de transporte" class="form-control" required)
+			div(class="form-group")
+				label Tiquetes
+				input(type="number" name="tickets" value="#{company.tickets}" placeholder="Cantidad de tiquetes por estudiante" class="form-control" required)
+			div(class="form-group")
+				label Contraseña administrador
+				input(type="password" name="password" placeholder="Verifica que eres administrador" class="form-control" required)
+			div(class="form-group text-right")
+				input(type="submit" class="btn btn-info" value="Editar")
+

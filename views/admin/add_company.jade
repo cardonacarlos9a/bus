@@ -1,0 +1,26 @@
+extends ../layoutAdmin.jade
+block contenido
+	div(class="col-md-5 center-block no-float top-space text-left")
+		h1(class="pacifico green text-center") Agregar compañía de transporte
+		form(method="post" action="/add_company" style="margin-top:1.5em;" enctype="multipart/form-data")
+			div(class="form-group")
+				label Nombre
+				input(type="text" name="name" placeholder="Nombre de la compañía de transporte" class="form-control" required)
+			div(class="form-group")
+				label NIT
+				input(type="text" name="id" placeholder="NIT De la compañía de transporte" class="form-control" required)
+			div(class="form-group")
+				label Teléfono
+				input(type="number" name="tel" placeholder="Teléfono de la compañía de transporte" class="form-control" required)
+			div(class="form-group")
+				label Ciudad &nbsp &nbsp
+				select(name='ciudad' id="ciudades" )
+					each city in cities
+						option(value=city.name) #{city.name}
+				&nbsp &nbsp &nbsp  &nbsp 
+				
+			div(class="form-group")
+				label Tiquetes
+				input(type="number" name="tickets" placeholder="Cantidad de tiquetes por estudiante" class="form-control" required)
+			div(class="form-group text-right")
+				input(type="submit" class="btn btn-info" value="Agregar")

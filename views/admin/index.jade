@@ -1,0 +1,44 @@
+extends ../layoutAdmin.jade
+block contenido
+	h1(class="pacifico text-center green grande") PANEL DE ADMINISTRADOR
+	
+	
+	div(class="form-group text-center")
+		="Para agregar un estudiante: " 
+		a(href="estudiante/new") Haga clic aquí.
+		//input(type="submit" href="/estudiante/new" class="btn btn-info" value="Registrar")
+	form(method="GET" action="/estudiante/info/" style="margin-top:1.5em")
+		div(class="form-group col-md-4 center-block no-float top-space text-left")
+			label Identificación
+			input(type="number" name="id" placeholder="Identificación estudiante" class="form-control" required) 
+		div(class=" form-group col-md-4 center-block no-float top-space text-right")
+			input(type="submit" class="btn btn-info" value="Iniciar Sesión")
+	div(class="col-md-4 center-block no-float top-space text-right")
+		hr(style='border1px;' class="marginleft marginright")
+	table(class="table marginleft marginright")
+		//caption Estudiantes actuales
+		p(class="text-center green") Estudiantes beneficiados actuales:
+		thead
+			tr
+				th Nombre
+				th Identificación
+				th Teléfono
+				th E-mail
+				th Ciudad
+				th Compañía
+				th Tiquetes
+				th Acciones
+		tbody
+			each student in students
+				tr
+					td=student.name
+					td=student.id
+					td=student.tel
+					td=student.email
+					td=student.city
+					td=student.company
+					td=student.tickets
+					td 
+						a(href="/estudiante/edit/#{student._id}" ) Editar
+						=" - "
+						a(href="/estudiante/delete/#{student._id}") Eliminar

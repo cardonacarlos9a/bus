@@ -1,0 +1,41 @@
+extends ../layoutAdmin.jade
+block contenido
+	div(class="col-md-5 center-block no-float top-space text-left")
+		h1(class="pacifico green text-center") Agregar estudiante
+		form(method="post" action="/estudiante" style="margin-top:1.5em;" enctype="multipart/form-data")
+			div(class="form-group")
+				label Nombre
+				input(type="text" name="name" placeholder="Nombre del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Identificación
+				input(type="number" name="id" placeholder="Identificación del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Teléfono
+				input(type="number" name="tel" placeholder="Teléfono del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Correo electrónico
+				input(type="text" name="email" placeholder="E-mail del estudiante" class="form-control" required)
+			div(class="form-group")
+				label Ciudad &nbsp &nbsp
+				select(name='Ciudad' id="ciudades" )
+					each city in cities
+						option(value=city.name) #{city.name}
+				&nbsp &nbsp &nbsp  &nbsp 
+				label Convenio &nbsp &nbsp 
+				select(name='Company')
+					each company in companies
+						option(value=company.name) #{company.name}
+					
+			div(class="form-group")
+				label Tiquetes
+				input(type="number" name="tickets" placeholder="Cantidad de tiquetes disponibles" class="form-control" required)
+			div(class="form-group")
+				label Contraseña
+				input(type="password" name="password" placeholder="Verifica que eres administrador" class="form-control" required)
+			div(class="form-group text-right")
+				input(type="submit" class="btn btn-info" value="Registrar")
+script.
+				$(document).ready(function() {
+				var valor = $("#ciudades option:selected").html();
+				alert(valor);
+				});

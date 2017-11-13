@@ -1,0 +1,34 @@
+extends ../layoutAdmin.jade
+block contenido
+	h1(class="pacifico text-center green grande") PANEL DE ADMINISTRADOR
+	
+	div(class="form-group text-center")
+		="Para agregar una compañía de transporte: " 
+		a(href="/admin/add_company") Haga clic aquí.
+		//input(type="submit" href="/estudiante/new" class="btn btn-info" value="Registrar")
+
+	table(class="table marginleft marginright")
+		//caption Estudiantes actuales
+		p(class="text-center ") Convenios empresas de transporte actuales:
+		div(class="form-group col-md-6 col-sm-3 col-xs-8 center-block no-float top-space")
+			hr(style='border1px;' class="marginleft marginright")
+		thead
+			tr
+				th Nombre
+				th NIT
+				th Teléfono
+				th Tiquetes
+				th Ciudad
+				th Acciones
+		tbody
+			each company in companies
+				tr
+					td=company.name
+					td=company.id
+					td=company.tel
+					td=company.tickets
+					td=company.city
+					td 
+						a(href="/company/edit/#{company._id}" ) Editar
+						=" - "
+						a(href="/company/delete/#{company._id}") Eliminar
