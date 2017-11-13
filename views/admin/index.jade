@@ -7,12 +7,12 @@ block contenido
 		="Para agregar un estudiante: " 
 		a(href="estudiante/new") Haga clic aquí.
 		//input(type="submit" href="/estudiante/new" class="btn btn-info" value="Registrar")
-	form(method="GET" action="/estudiante/info/" style="margin-top:1.5em")
-		div(class="form-group col-md-4 center-block no-float top-space text-left")
-			label Identificación
-			input(type="number" name="id" placeholder="Identificación estudiante" class="form-control" required) 
-		div(class=" form-group col-md-4 center-block no-float top-space text-right")
-			input(type="submit" class="btn btn-info" value="Iniciar Sesión")
+		form(method="GET" action="/estudiante/info/" style="margin-top:1.5em")
+			div(class="form-group col-md-4 center-block no-float top-space text-left")
+				label Identificación
+				input(type="number" name="id" placeholder="Identificación estudiante" class="form-control" required) 
+			div(class=" form-group col-md-4 center-block no-float top-space text-right")
+				input(type="submit" class="btn btn-info" value="Burcar estudiante")
 	div(class="col-md-4 center-block no-float top-space text-right")
 		hr(style='border1px;' class="marginleft marginright")
 	table(class="table marginleft marginright")

@@ -102,7 +102,7 @@ app.get("/estudiante/edit/:_id", function(solicitud, respuesta) {
  * Método que permite redirigir a la pestaña de edición de estudiante
  */
 app.get("/estudiante/info/", function(solicitud, respuesta) {
-	var id_student = solicitud.params.id;
+	var id_student = solicitud.body.id;
 	console.log("Buscar id "+id_student);
 	Student.findOne({ "id": id_student }, function(error, estudiante) {
 		console.log("Estudiante encontrado es: "+estudiante);
