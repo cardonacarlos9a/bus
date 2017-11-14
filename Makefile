@@ -1,7 +1,7 @@
 build:
 
 	@echo "Building..."
-	@npm install typescript-require --save-dev
+	@npm install jshint --save-dev
 	@echo "Done!"
 
 
