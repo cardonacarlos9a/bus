@@ -1,3 +1,4 @@
+## Running the server
 En una consola:
 mongod --smallfiles
 

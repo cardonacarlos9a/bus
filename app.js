@@ -12,6 +12,11 @@ var Student = require('./models/studentSchema');
 var Company = require('./models/companySchema');
 var City = require('./models/citySchema');
 var entregaTiquetes = require('./models/entregaTiqueteSchema');
+var consultas = require('./consultasMongo/consultas');
+
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://" + process.env.IP;
 
 cloudinary.config({
 	cloud_name: "dcbpeldar",
@@ -21,8 +26,8 @@ cloudinary.config({
 
 var app = express();
 
-mongoose.connect('mongodb://'+process.env.IP,{
-	useMongoClient:true,
+mongoose.connect('mongodb://' + process.env.IP, {
+	useMongoClient: true,
 });
 
 
@@ -103,9 +108,9 @@ app.get("/estudiante/edit/:_id", function(solicitud, respuesta) {
  */
 app.get("/estudiante/info/", function(solicitud, respuesta) {
 	var id_student = solicitud.body.id;
-	console.log("Buscar id "+id_student);
+	console.log("Buscar id " + id_student);
 	Student.findOne({ "id": id_student }, function(error, estudiante) {
-		console.log("Estudiante encontrado es: "+estudiante);
+		console.log("Estudiante encontrado es: " + estudiante);
 		respuesta.render("estudiante/edit", { student: estudiante });
 	});
 });
@@ -121,7 +126,8 @@ app.put("/estudiante/:_id", function(solicitud, respuesta) {
 			id: solicitud.body.id,
 			tel: solicitud.body.tel,
 			email: solicitud.body.email,
-			tickets: solicitud.body.tickets
+			tickets: solicitud.body.tickets,
+			estado: solicitud.body.estado
 		};
 
 		/*if (solicitud.files.hasOwnProperty("image")) {
@@ -307,11 +313,22 @@ app.get("/admin/salir", function(solicitud, respuesta) {
  */
 app.get("/admin/reportes", function(solicitud, respuesta) {
 	if (password) {
-		respuesta.render("admin/reportes");
+		var consultaARelizar = solicitud.query['numConsulta'];
+		console.log(consultaARelizar);
+
+
+		consultas.FindinCol1().then(function(items) {
+			//console.info('The promise was fulfilled with items!', items);
+			respuesta.render("admin/reportes", { resultado: items, consulta:consultaARelizar });
+		}, function(err) {
+			console.error('The promise was rejected', err, err.stack);
+		});
+
 
 	}
 	else { respuesta.redirect("/") };
 });
+
 
 /**
  * Metodo para registrar un estudiante
@@ -325,11 +342,12 @@ app.post("/estudiante", function(solicitud, respuesta) {
 		tel: solicitud.body.tel,
 		email: solicitud.body.email,
 		tickets: solicitud.body.tickets,
+		estado: 'activo',
 		city: solicitud.body.Ciudad,
 		company: solicitud.body.Company
 
 	}
-	
+
 	var student = new Student(data);
 
 	/*if (solicitud.files.hasOwnProperty("image")) {
@@ -371,14 +389,14 @@ app.get("/estudiante/new", function(solicitud, respuesta) {
 			console.log(error);
 		}
 
-	Company.find(function(error, documento2) {
-		if (error) {
-			console.log(error);
-		}
-		
-		respuesta.render("estudiante/new", { cities: documento, companies: documento2 });
+		Company.find(function(error, documento2) {
+			if (error) {
+				console.log(error);
+			}
 
-	});
+			respuesta.render("estudiante/new", { cities: documento, companies: documento2 });
+
+		});
 	});
 
 	//respuesta.render("estudiante/new")
@@ -445,7 +463,7 @@ app.post("/add_company", function(solicitud, respuesta) {
 		tickets: solicitud.body.tickets,
 		city: solicitud.body.ciudad
 	}
-	
+
 	var company = new Company(data);
 
 
@@ -539,13 +557,13 @@ app.get("/company", function(solicitud, respuesta) {
 app.get("/company/edit/:_id", function(solicitud, respuesta) {
 	var id_student = solicitud.params._id;
 	Company.findOne({ "_id": id_student }, function(error, documento) {
-		
+
 		City.find(function(error, documento2) {
-		if (error) {
-			console.log(error);
-		}
-		respuesta.render("company/edit", { cities: documento2, company: documento });
-	});
+			if (error) {
+				console.log(error);
+			}
+			respuesta.render("company/edit", { cities: documento2, company: documento });
+		});
 	});
 });
 
@@ -559,5 +577,19 @@ app.get("/company/delete/:_id", function(solicitud, respuesta) {
 		respuesta.render("company/delete", { company: documento });
 	});
 });
+
+
+/**
+ * Este metodo realiza la consulta de los estudiantes que estan suspendidos y devuelve
+ * la lista con nombre, documento, telefono y correo electrónico
+ */
+function consultarEstudiantesSuspendidos() {
+
+
+
+
+}
+
+
 
 app.listen(process.env.PORT);
