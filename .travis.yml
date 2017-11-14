@@ -1,1 +1,5 @@
-
+language: node
+rvm:
+ - 2.2
+ - jruby
+ - rbx-3
