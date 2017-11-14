@@ -4,8 +4,9 @@
   "description": "bienestarUq",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
-  },
+  "build": "make build",
+  "test": "node ./src/typescript/bin/tsc.js -m commonjs -t ES5 test/*.ts && ./node_modules/mocha/bin/mocha"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
