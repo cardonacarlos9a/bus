@@ -2,6 +2,8 @@ build:
 
 	@echo "Building..."
 	@npm install typescript-require --save-dev
+	@cp src/typescript/bin/lib.* lib/
+	@node ./src/typescript/bin/tsc.js -m commonjs -t ES5 src/index.ts --out index.js
 	@echo "Done!"
 
 
