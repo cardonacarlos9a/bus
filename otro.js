@@ -4,7 +4,7 @@ function noHanReclamado(fechaAComparar) {
     entregaTiquetes.find({
         
     fechaEntrega: {
-        
+        nuuiiu
             "$match": {
                 "$and": [{
                     "fechaEntrega": {
